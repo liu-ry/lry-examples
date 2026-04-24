@@ -58,7 +58,7 @@ class VAE(nn.Module):
         return self.fc21(h1), self.fc22(h1)
 
     def reparameterize(self, mu, logvar):
-        std = torch.exp(0.5*logvar)
+        std = torch.exp(0.5*logvar) #（代码里一般输出 log 方差，数值稳定）
         eps = torch.randn_like(std)
         return mu + eps*std
 
