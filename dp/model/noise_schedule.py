@@ -1,5 +1,5 @@
 """
-shared/noise_schedule.py  —  噪声调度表 + 前向加噪 + 训练损失
+model/noise_schedule.py  —  噪声调度表 + 前向加噪 + 训练损失
 
 DDPM / DDIM / Stable Diffusion 等扩散模型变体共用的核心组件：
 

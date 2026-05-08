@@ -1,6 +1,6 @@
 # Diffusion Models 学习系列
 
-本目录是扩散模型的系统性学习仓库，各子目录共用 `shared/` 中的基础组件，
+本目录是扩散模型的系统性学习仓库，各子目录共用 `model/` 中的基础组件，
 仅在各自特有的采样/架构部分有所不同。
 
 ---
@@ -9,7 +9,7 @@
 
 ```
 dp/
-├── shared/                    # ★ 所有变体共用的基础组件
+├── model/                    # ★ 所有变体共用的基础组件
 │   ├── model.py               # SimpleUNet（噪声预测骨干网络）
 │   ├── noise_schedule.py      # β-schedule + 前向加噪 q_sample + 训练损失 p_losses
 │   └── __init__.py
@@ -33,9 +33,9 @@ dp/
 
 ---
 
-## shared/ 模块说明
+## model/ 模块说明
 
-### `shared/model.py` — SimpleUNet
+### `model/model.py` — SimpleUNet
 
 所有扩散变体共用的噪声预测骨干网络：
 
@@ -48,7 +48,7 @@ dp/
 输出: (B, C, H, W) 预测噪声 ε_θ
 ```
 
-### `shared/noise_schedule.py` — NoiseSchedule
+### `model/noise_schedule.py` — NoiseSchedule
 
 前向扩散过程，DDPM / DDIM 完全共用：
 

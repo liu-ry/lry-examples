@@ -10,11 +10,11 @@ DDPM 特有的反向采样方式：
   DDPM : 每步加随机噪声 σ_t·z  → 随机采样，需要全部 T 步
   DDIM : 每步确定性更新          → 可跳步，100 步即可得到与 1000 步相近的质量
 
-本文件仅包含 DDPM 特有的采样逻辑；前向加噪和训练损失在 shared/ 中。
+本文件仅包含 DDPM 特有的采样逻辑；前向加噪和训练损失在 model/ 中。
 """
 
 import torch
-from shared.noise_schedule import NoiseSchedule
+from model.noise_schedule import NoiseSchedule
 
 
 class DDPMSampler:

@@ -24,7 +24,7 @@ from torchvision import datasets, transforms
 from torchvision.utils import save_image, make_grid
 
 # 将 dp/ 根目录加入 path，使 model/ 可被直接 import
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from model.model         import SimpleUNet
 from model.noise_schedule import NoiseSchedule
@@ -68,11 +68,11 @@ transform = transforms.Compose([
 kwargs = {'num_workers': 4, 'pin_memory': True} if use_cuda else {}
 
 train_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('../../data', train=True,  download=True, transform=transform),
+    datasets.MNIST('../data', train=True,  download=True, transform=transform),
     batch_size=args.batch_size, shuffle=True, **kwargs)
 
 val_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('../../data', train=False, transform=transform),
+    datasets.MNIST('../data', train=False, transform=transform),
     batch_size=args.batch_size, shuffle=False, **kwargs)
 
 # ---------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 # DDPM（Denoising Diffusion Probabilistic Models）
 
-本目录是 DDPM 的完整实现，基于 `dp/shared/` 中的公共组件构建。
+本目录是 DDPM 的完整实现，基于 `dp/model/` 中的公共组件构建。
 
 > 参考：Ho et al. *Denoising Diffusion Probabilistic Models* (NeurIPS 2020)
 
@@ -11,7 +11,7 @@
 | 文件 | 说明 |
 |------|------|
 | `sampler.py` | **祖先采样器**：每步去噪时注入随机噪声 $\sigma_t z$，需要走完全部 T 步 |
-| `main.py`    | 训练入口，使用 `shared/` 中的 UNet 和 NoiseSchedule |
+| `main.py`    | 训练入口，使用 `model/` 中的 UNet 和 NoiseSchedule |
 
 ---
 
@@ -29,7 +29,7 @@ $$x_{t-1} = \frac{1}{\sqrt{\alpha_t}}\left(x_t - \frac{\beta_t}{\sqrt{1-\bar\alp
 | 采样方式 | 随机（每步加噪） | 确定性 |
 | 推理步数 | 需要全部 T 步 | 可跳步，50~100 步即可 |
 | 训练 | 完全相同 | 完全相同 |
-| 共用文件 | `shared/model.py`, `shared/noise_schedule.py` | 同左 |
+| 共用文件 | `model/model.py`, `model/noise_schedule.py` | 同左 |
 
 ---
 

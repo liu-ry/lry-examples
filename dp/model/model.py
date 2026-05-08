@@ -1,5 +1,5 @@
 """
-shared/model.py  —  UNet 噪声预测骨干网络
+model/model.py  —  UNet 噪声预测骨干网络
 
 所有扩散模型变体（DDPM / DDIM / Stable Diffusion 等）都使用同一个
 "噪声预测网络"来估计 ε_θ，该文件提供可复用的 SimpleUNet 实现。
