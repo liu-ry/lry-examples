@@ -45,7 +45,7 @@ parser.add_argument('--schedule',     type=str,   default='linear',
 parser.add_argument('--seed',         type=int,   default=42)
 parser.add_argument('--log-interval', type=int,   default=100)
 parser.add_argument('--no-cuda',      action='store_true')
-parser.add_argument('--results-dir',  type=str,   default='results')
+parser.add_argument('--results-dir',  type=str,   default='results_ddpm')
 args = parser.parse_args()
 
 # ---------------------------------------------------------------------------

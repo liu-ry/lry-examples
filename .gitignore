@@ -24,4 +24,5 @@ docs/venv
 .vscode
 **/.DS_Store
 dp/*/results/*
-dp/results/*
+dp/results_ddpm/*
+dp/results_ddim/*
