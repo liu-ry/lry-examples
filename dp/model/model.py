@@ -140,13 +140,17 @@ class SimpleUNet(nn.Module):
         )
 
     def forward(self, x: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+        import torch.nn.functional as F
         t_emb = self.time_emb(t)
 
         e1 = self.enc1(x, t_emb)
         e2 = self.enc2(self.down1(e1), t_emb)
         m  = self.mid2(self.mid1(self.down2(e2), t_emb), t_emb)
 
-        d2 = self.dec2(torch.cat([self.up2(m),  e2], dim=1), t_emb)
-        d1 = self.dec1(torch.cat([self.up1(d2), e1], dim=1), t_emb)
+        # 用双线性插值对齐 skip connection 的空间尺寸（支持任意输入分辨率）
+        up2_out = F.interpolate(self.up2(m),  size=e2.shape[2:], mode='bilinear', align_corners=False)
+        d2 = self.dec2(torch.cat([up2_out, e2], dim=1), t_emb)
+        up1_out = F.interpolate(self.up1(d2), size=e1.shape[2:], mode='bilinear', align_corners=False)
+        d1 = self.dec1(torch.cat([up1_out, e1], dim=1), t_emb)
 
         return self.out(d1)

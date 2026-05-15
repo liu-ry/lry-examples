@@ -26,3 +26,5 @@ docs/venv
 dp/*/results/*
 dp/results_ddpm/*
 dp/results_ddim/*
+dp/results_sd/*
+dp/results_fm/*
